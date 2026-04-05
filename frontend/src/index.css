@@ -1,0 +1,185 @@
+/* ============================================
+   FILE: frontend/src/index.css
+   Global styles, Tailwind directives, utilities
+   ============================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Dynamic sky background ──────────────────────────────────────────────── */
+
+.sky-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg,
+    #0f0c29 0%,
+    #1a1a4e 20%,
+    #0d3b6e 45%,
+    #1565c0 70%,
+    #0288d1 100%
+  );
+  background-attachment: fixed;
+  position: relative;
+}
+
+.sky-bg::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(100, 181, 246, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(144, 202, 249, 0.10) 0%, transparent 40%),
+    radial-gradient(ellipse at 60% 80%, rgba(13, 71, 161, 0.20) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Glassmorphism card ───────────────────────────────────────────────────── */
+
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.20);
+}
+
+.glass-hover {
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.glass-hover:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: translateY(-2px);
+  box-shadow:
+    0 20px 56px rgba(0, 0, 0, 0.40),
+    inset 0 1px 0 rgba(255, 255, 255, 0.20);
+}
+
+/* ── Typography helpers ──────────────────────────────────────────────────── */
+
+.font-display {
+  font-family: 'Syne', sans-serif;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.20);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+/* ── Input overrides ─────────────────────────────────────────────────────── */
+
+input::placeholder {
+  color: rgba(255,255,255,0.40);
+}
+
+input:focus {
+  outline: none;
+}
+
+/* ── Animations ──────────────────────────────────────────────────────────── */
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.06) 25%,
+    rgba(255,255,255,0.12) 50%,
+    rgba(255,255,255,0.06) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+@keyframes spinnerRing {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.spinner-ring {
+  animation: spinnerRing 0.8s linear infinite;
+}
+
+/* ── Recharts overrides (transparent backgrounds) ────────────────────────── */
+
+.recharts-surface,
+.recharts-wrapper,
+.recharts-responsive-container {
+  background: transparent !important;
+}
+
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: rgba(255,255,255,0.08);
+}
+
+.recharts-text {
+  fill: rgba(255,255,255,0.55);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+}
+
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: rgba(10, 30, 70, 0.90) !important;
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.40) !important;
+}
+
+.recharts-tooltip-label {
+  color: rgba(255,255,255,0.70) !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 12px !important;
+}
