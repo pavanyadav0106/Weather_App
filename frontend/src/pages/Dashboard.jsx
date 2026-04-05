@@ -135,7 +135,7 @@ export default function Dashboard() {
 
         {/* ── Footer ─────────────────────────────────────────────────── */}
         <footer className="text-center mt-10 text-white/20 text-xs">
-          Powered by OpenWeatherMap &bull; Built with React + Vite + Node.js
+          Powered by OpenWeatherMap &bull; Built with React + Vite + Spring Boot
         </footer>
       </div>
     </div>
