@@ -37,9 +37,14 @@ public class WeatherController {
         return apiKey;
     }
 
-    @GetMapping("/")
-    public String root() {
-        return "Weather API is running 🚀";
+    // ── REMOVED root() mapping to allow static index.html to serve at "/" ─────────────────
+
+    /**
+     * SPA Routing: Forward's non-API requests to index.html (React handles the rest)
+     */
+    @GetMapping(value = "{path:[^\\.]*}")
+    public String forward() {
+        return "forward:/index.html";
     }
 
     @GetMapping("/api/health")
