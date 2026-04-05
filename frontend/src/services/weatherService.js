@@ -6,8 +6,11 @@
 import axios from "axios";
 
 // Axios instance — all requests go to /api (proxied to backend via Vite)
+const rawUrl = import.meta.env.VITE_API_URL || "";
+const baseUrl = rawUrl.startsWith("http") ? rawUrl : "https://" + rawUrl;
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL + "/api",
+  baseURL: baseUrl + "/api",
   timeout: 12000,
 });
 
