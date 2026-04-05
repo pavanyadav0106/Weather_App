@@ -29,9 +29,3 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
-
-# Vercel
-.vercel/
-
-# Custom Domain (Local only)
-CNAME
